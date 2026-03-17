@@ -91,7 +91,12 @@ app.post('/api/orders', authenticateToken, (req, res) => {
     });
 });
 
-// Start server
-app.listen(PORT, () => {
-    console.log(`Backend server running on http://localhost:${PORT}`);
-});
+// Export the app for Vercel
+module.exports = app;
+
+// Only start the server if not running as a Vercel function
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`Backend server running on http://localhost:${PORT}`);
+    });
+}

@@ -1,7 +1,12 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const os = require('os');
 
-const dbPath = path.resolve(__dirname, 'crownmarket.db');
+// On Vercel, we must use /tmp for writable files
+const dbPath = process.env.VERCEL 
+    ? path.join(os.tmpdir(), 'crownmarket.db') 
+    : path.resolve(__dirname, 'crownmarket.db');
+
 const db = new sqlite3.Database(dbPath, (err) => {
     if (err) {
         console.error('Error connecting to database:', err.message);

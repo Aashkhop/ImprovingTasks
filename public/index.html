@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrownMarket - Premium Store</title>
+    <!-- Include premium font -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2" id="nav-brand" data-route="home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-package-2 text-accent-color"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/><path d="M12 3v6"/></svg>
+                <span class="logo">CrownMarket</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="#" class="nav-link" data-route="home">Shop</a>
+                <a href="#" class="flex items-center nav-link" data-route="cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                    <span id="cart-badge" class="cart-badge" style="display: none;">0</span>
+                </a>
+                
+                <div id="auth-section" class="flex items-center gap-4">
+                    <!-- This will be populated dynamically -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="app-content">
+        <!-- Views will be conditionally displayed here -->
+
+        <!-- Home View -->
+        <section id="view-home" class="container view active">
+            <div style="padding: 4rem 0; text-align: center;">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(to right, #60a5fa, #a78bfa); -webkit-background-clip: text; color: transparent;">
+                    Discover Exceptional Quality
+                </h1>
+                <p style="color: var(--text-secondary); font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+                    Explore our premium selection of carefully curated products designed to elevate your lifestyle.
+                </p>
+            </div>
+            <div id="products-grid" class="products-grid">
+                <!-- Products will be injected here -->
+            </div>
+        </section>
+
+        <!-- Product Details View -->
+        <section id="view-details" class="container view" style="display: none;">
+            <button class="flex items-center gap-2 btn btn-outline" style="margin-top: 2rem; padding: 0.5rem 1rem; border: none;" data-route="home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                Back to Products
+            </button>
+            <div id="product-details-content" class="details-page">
+                <!-- Product details injected here -->
+            </div>
+        </section>
+
+        <!-- Cart View -->
+        <section id="view-cart" class="container view" style="display: none; padding: 4rem 0;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 2rem;">Shopping Cart</h1>
+            <div id="cart-content-container">
+                <!-- Cart Content Injected Here -->
+            </div>
+        </section>
+
+        <!-- Login View -->
+        <section id="view-login" class="container view" style="display: none;">
+            <div class="auth-container card">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-in text-accent-color" style="margin: 0 auto 1rem;"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg>
+                    <h2 style="font-size: 2rem;">Welcome Back</h2>
+                    <p style="color: var(--text-secondary);">Log in to access your account</p>
+                </div>
+                
+                <div id="login-error" style="display: none; padding: 0.75rem; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.5); color: var(--danger); border-radius: 0.5rem; margin-bottom: 1.5rem; text-align: center;"></div>
+                
+                <form id="login-form">
+                    <div class="form-group">
+                        <label class="form-label" for="login-email">Email Address</label>
+                        <input id="login-email" type="email" class="form-input" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 2rem;">
+                        <label class="form-label" for="login-password">Password</label>
+                        <input id="login-password" type="password" class="form-input" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Log In</button>
+                </form>
+                
+                <p style="text-align: center; margin-top: 2rem; color: var(--text-secondary);">
+                    Don't have an account? <a href="#" data-route="register" style="color: var(--accent-color); font-weight: 600;">Sign up</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Register View -->
+        <section id="view-register" class="container view" style="display: none;">
+            <div class="auth-container card">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus text-accent-color" style="margin: 0 auto 1rem;"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+                    <h2 style="font-size: 2rem;">Create Account</h2>
+                    <p style="color: var(--text-secondary);">Join CrownMarket today</p>
+                </div>
+
+                <div id="register-error" style="display: none; padding: 0.75rem; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.5); color: var(--danger); border-radius: 0.5rem; margin-bottom: 1.5rem; text-align: center;"></div>
+                
+                <form id="register-form">
+                    <div class="form-group">
+                        <label class="form-label" for="register-name">Full Name</label>
+                        <input id="register-name" type="text" class="form-input" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="register-email">Email Address</label>
+                        <input id="register-email" type="email" class="form-input" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 2rem;">
+                        <label class="form-label" for="register-password">Password</label>
+                        <input id="register-password" type="password" class="form-input" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Sign Up</button>
+                </form>
+                
+                <p style="text-align: center; margin-top: 2rem; color: var(--text-secondary);">
+                    Already have an account? <a href="#" data-route="login" style="color: var(--accent-color); font-weight: 600;">Log in</a>
+                </p>
+            </div>
+        </section>
+        
+        <!-- Order Success View -->
+        <section id="view-success" class="container view" style="display: none; height: 70vh; flex-direction: column; text-align: center; align-items: center; justify-content: center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag text-accent-color" style="margin-bottom: 1.5rem;"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Order Placed Successfully!</h1>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Thank you for shopping at CrownMarket.</p>
+            <a href="#" class="btn btn-primary" data-route="home">Continue Shopping</a>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
